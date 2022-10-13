@@ -1,22 +1,21 @@
 <?php
 
 namespace App\Http\Controllers;
-
-use Illuminate\Http\Request;
+use App\Http\Resources\UserResource;
 use App\Models\User;
+use Illuminate\Http\Request;
 
-class TestController extends Controller
+class UserApiController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+
      */
     public function index()
     {
-        $user = User::with('checkin')->first();
-        dump($user->toArray());
-//
+        $users = User::all();
+        return UserResource::collection($users);
     }
 
     /**
@@ -44,11 +43,14 @@ class TestController extends Controller
      * Display the specified resource.
      *
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\Resources\Json\AnonymousResourceCollection
      */
     public function show($id)
     {
-        //
+//        $user = User::find($id);
+       $user = User::findOrFail($id);
+       return $user;
+//        return UserResource::collection($user);
     }
 
     /**

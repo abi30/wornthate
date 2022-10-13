@@ -48,6 +48,7 @@ class User extends Authenticatable
     ];
 
     // user has one checkin
+
     public function checkin()
     {
         return $this->hasOne(Checkin::class);
@@ -55,19 +56,25 @@ class User extends Authenticatable
     // user has many checkins
     public function checkins()
     {
-        return $this->hasMany('Checkin');
-
-    }  // user has one place
-    public function place()
-    {
-        return $this->hasOne(Place::class);
-    }
-    // user has many places
-    public function places()
-    {
-        return $this->hasMany('Place');
+        return $this->hasMany(Checkin::class);
 
     }
+
+
+   //=======================
+    // user has one place
+    /*
+        public function place()
+        {
+            return $this->hasOne(Place::class);
+        }
+        // user has many places
+        public function places()
+        {
+            return $this->hasMany('Place');
+
+        }
+    */
 
 
 
