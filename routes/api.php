@@ -1,6 +1,7 @@
 <?php
 
 
+use App\Http\Controllers\PlaceApiController;
 use App\Http\Controllers\UserApiController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -21,3 +22,7 @@ use Illuminate\Support\Facades\Route;
 //});
 route::get('/users',[UserApiController::class,'index']);
 Route::get('/users/{id}', [UserApiController::class,'show']);
+
+
+route::get('/places',[PlaceApiController::class,'index']);
+Route::get('/places/{id}', [PlaceApiController::class,'show']);
